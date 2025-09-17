@@ -4,7 +4,7 @@ const Details = ({ setDetails }) => {
   const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [error, setError] = useState("");
+  // const [error, setError] = useState("");
 
   const isComplete = useMemo(() => {
     return userName !== "" && email !== "" && phone !== "";
@@ -13,18 +13,19 @@ const Details = ({ setDetails }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!isComplete) {
-      setError("Please fill all the fields before proceeding");
+      // setError("Please fill all the fields before proceeding");
       return;
     }
-    setError("");
+    // setError("");
     console.log("form submitted");
+    setDetails({ userName, email, phone });
   };
 
   return (
     <>
       <p>Please make sure to fill all fields before being allowed to proceed</p>
       <form onSubmit={handleSubmit}>
-        {error && <p style={{ color: "red" }}>{error}</p>}
+        {/* {error && <p style={{ color: "red" }}>{error}</p>} */}
         <label htmlFor="name">Name:</label>
         <input
           type="text"
@@ -52,7 +53,7 @@ const Details = ({ setDetails }) => {
           onChange={(e) => setPhone(e.target.value)}
         />
         <br />
-        <button type="submit" disabled={!isComplete}>
+        <button type="submit" disabled={!isComplete} onClick={handleSubmit}>
           Next
         </button>
       </form>

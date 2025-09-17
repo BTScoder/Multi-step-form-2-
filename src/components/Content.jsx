@@ -16,9 +16,21 @@ const Content = () => {
     yearlyBilling: false,
   });
 
+  const setDetails = ({ userName, email, phone }) => {
+    setData((prev) => ({
+      ...prev,
+      personalInfo: {
+        name: userName,
+        email,
+        phone,
+      },
+    }));
+  };
+  console.log(data);
   return (
     <>
-      <Details />
+      {/* Note that we dont use parenthesis in the setDetails here because it calls it immediately  */}
+      <Details setDetails={setDetails} />
     </>
   );
 };
