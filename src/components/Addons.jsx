@@ -1,5 +1,9 @@
 const Addons = () => {
-  return <></>;
+  return (
+    <>
+      <p>Add ons Page </p>
+    </>
+  );
 };
 
 export default Addons;

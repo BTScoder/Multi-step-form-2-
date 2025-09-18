@@ -12,6 +12,7 @@ const SelectPlan = ({ setSelectedPlan, setCurrentPage }) => {
     e.preventDefault();
     // console.log("form submitted");
     setSelectedPlan({ selectedPlanType, selectedPlanPrice });
+    setCurrentPage((prev) => prev + 1);
   };
   // console.log(selectedPlan);
 
@@ -36,7 +37,11 @@ const SelectPlan = ({ setSelectedPlan, setCurrentPage }) => {
         ))}
 
         <div>
-          <button type="button" className="border-2 border-black p-3">
+          <button
+            type="button"
+            className="border-2 border-black p-3"
+            onClick={() => setCurrentPage((prev) => prev - 1)}
+          >
             Go back
           </button>
           <button
