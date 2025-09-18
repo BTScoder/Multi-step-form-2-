@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 
-const Details = ({ setDetails }) => {
+const Details = ({ setDetails, setCurrentPage }) => {
   const [userName, setuserName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,6 +19,7 @@ const Details = ({ setDetails }) => {
     // setError("");
     console.log("form submitted");
     setDetails({ userName, email, phone });
+    setCurrentPage((prev) => prev + 1);
   };
 
   return (
