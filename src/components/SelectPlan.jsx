@@ -11,7 +11,7 @@ const SelectPlan = ({ setSelectedPlan, setCurrentPage }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log("form submitted");
-    setSelectedPlan({ selectedPlanType, selectedPlanPrice });
+    setSelectedPlan({ selectedPlanType, selectedPlanPrice, yearly });
     setCurrentPage((prev) => prev + 1);
   };
   // console.log(selectedPlan);
@@ -36,6 +36,32 @@ const SelectPlan = ({ setSelectedPlan, setCurrentPage }) => {
           </div>
         ))}
 
+        <div className="my-5 flex items-center justify-center gap-4">
+          <span
+            className={`text-sm font-bold ${yearly ? "text-gray-600" : "text-blue-950"}`}
+          >
+            Monthly
+          </span>
+          {/* The actual toggle */}
+          <div
+            onClick={() => setYearly(!yearly)}
+            className="flex h-6 w-12 cursor-pointer items-center rounded-full bg-blue-900 p-1"
+          >
+            <div
+              className={`h-4 w-4 transform rounded-full bg-white shadow-md duration-300 ${
+                yearly ? "translate-x-6" : "translate-x-0"
+              }`}
+            ></div>
+          </div>
+
+          {/* End of actual toggle */}
+          <span
+            className={`text-sm font-bold ${yearly ? "text-blue-950" : "text-gray-600"}`}
+          >
+            Yearly
+          </span>
+        </div>
+
         <div>
           <button
             type="button"
@@ -54,32 +80,6 @@ const SelectPlan = ({ setSelectedPlan, setCurrentPage }) => {
         </div>
       </form>
       <p>{`Selected plan is : ${selected}`}</p>
-
-      <div className="my-5 flex items-center justify-center gap-4">
-        <span
-          className={`text-sm font-bold ${yearly ? "text-gray-600" : "text-blue-950"}`}
-        >
-          Monthly
-        </span>
-        {/* The actual toggle */}
-        <div
-          onClick={() => setYearly(!yearly)}
-          className="flex h-6 w-12 cursor-pointer items-center rounded-full bg-blue-900 p-1"
-        >
-          <div
-            className={`h-4 w-4 transform rounded-full bg-white shadow-md duration-300 ${
-              yearly ? "translate-x-6" : "translate-x-0"
-            }`}
-          ></div>
-        </div>
-
-        {/* End of actual toggle */}
-        <span
-          className={`text-sm font-bold ${yearly ? "text-blue-950" : "text-gray-600"}`}
-        >
-          Yearly
-        </span>
-      </div>
     </div>
   );
 };

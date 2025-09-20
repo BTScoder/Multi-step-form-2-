@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import PAGES from "../constants";
 // import Details from "./Details";
 const Content = () => {
-  const [currentPage, setcurrentPage] = useState(2);
+  const [currentPage, setcurrentPage] = useState(1);
   const [data, setData] = useState({
     personalInfo: {
       name: "",
@@ -29,17 +29,26 @@ const Content = () => {
     }));
   };
 
-  const setSelectedPlan = ({ selectedPlanType, selectedPlanPrice }) => {
-    console.log(selectedPlanType);
+  const setSelectedPlan = ({ selectedPlanType, selectedPlanPrice, yearly }) => {
+    // console.log(selectedPlanType);
     setData((prev) => ({
       ...prev,
       plan: {
         type: selectedPlanType,
         price: selectedPlanPrice,
       },
+      yearlyBilling: yearly,
+    }));
+  };
+
+  const setAddons = (selectedAddons) => {
+    setData((prev) => ({
+      ...prev,
+      addOns: selectedAddons,
     }));
   };
   console.log(data);
+
   return (
     <>
       {/* Note that we dont use parenthesis in the setDetails here because it calls it immediately  */}
@@ -52,6 +61,8 @@ const Content = () => {
             setDetails={setDetails}
             setSelectedPlan={setSelectedPlan}
             setCurrentPage={setcurrentPage}
+            setAddons={setAddons}
+            yearly={data.yearlyBilling}
           />
         ) : null,
       )}

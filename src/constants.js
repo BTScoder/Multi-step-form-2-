@@ -42,4 +42,28 @@ export const PLANS = [
   },
 ];
 
+export const ADDONS = [
+  {
+    id: 1,
+    addon: "online service",
+    isChecked: false,
+    monthlyPrice: 1,
+    yearlyPrice: 10,
+  },
+  {
+    id: 2,
+    addon: "larger storage",
+    isChecked: false,
+    monthlyPrice: 2,
+    yearlyPrice: 20,
+  },
+  {
+    id: 3,
+    addon: "customizable profile",
+    isChecked: false,
+    monthlyPrice: 2,
+    yearlyPrice: 20,
+  },
+];
+
 export default PAGES;
