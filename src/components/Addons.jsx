@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ADDONS } from "../constants";
 
-const Addons = ({ yearly, setAddons }) => {
+const Addons = ({ yearly, setAddons, setCurrentPage }) => {
   const [differentAddons, setDifferentAddons] = useState(ADDONS);
 
   const handleAddonChange = (id) => {
@@ -17,6 +17,7 @@ const Addons = ({ yearly, setAddons }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setAddons(differentAddons.filter((addon) => addon.isChecked));
+    setCurrentPage((prev) => prev + 1);
   };
   return (
     <>
@@ -49,7 +50,12 @@ const Addons = ({ yearly, setAddons }) => {
             <br />
           </div>
         ))}
-        <button type="button">Go Back</button>
+        <button
+          type="button"
+          onClick={() => setCurrentPage((prev) => prev - 1)}
+        >
+          Go Back
+        </button>
         <button
           type="submit"
           disabled={
